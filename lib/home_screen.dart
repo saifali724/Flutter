@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:other/authentication/firebase_auth_service.dart';
 import 'services.dart'; // Import the ServicesScreen
 import 'calendar.dart'; // Import the CalendarScreen
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -41,12 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 30.0,
-              backgroundImage: AssetImage('lib/profile_picture.png'),
+              // backgroundImage: AssetImage('lib/profile_picture.png'),
             ),
-            SizedBox(width: 10.0),
-            Column(
+            const SizedBox(width: 10.0),
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -66,15 +69,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               color: Colors.black,
               onPressed: () {
                 // Define action for search button here
               },
               iconSize: 28.0,
             ),
+            IconButton(
+              icon: const Icon(Icons.logout_rounded),
+              color: Colors.black,
+              onPressed: () {
+                FirebaseAuthService().signOut();
+                // Define action for search button here
+              },
+              iconSize: 28.0,
+            )
           ],
         ),
       ),
@@ -82,13 +94,13 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Services',
                     style: TextStyle(
                       fontSize: 24.0,
@@ -98,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   TextButton(
                     onPressed: _toggleShowAll,
-                    child: Text(
+                    child: const Text(
                       'see all',
                       style: TextStyle(
                         fontSize: 16.0,
@@ -110,33 +122,33 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 13.0),
+              padding: const EdgeInsets.symmetric(horizontal: 13.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildServiceCard(label: 'Website Development'),
-                  SizedBox(width: 13.0),
+                  const SizedBox(width: 13.0),
                   _buildServiceCard(label: 'Mobile Apps Development'),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   _buildServiceCard(label: 'Social Media Marketing'),
                 ],
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Center(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Color(0xFF0B8FAC), // New color
+                    color: const Color(0xFF0B8FAC), // New color
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Tech Consultation',
                         style: TextStyle(
                           color: Colors.white,
@@ -144,19 +156,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 25.0),
-                      Text(
+                      const SizedBox(height: 25.0),
+                      const Text(
                         'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14.0,
                         ),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       Container(
                         height: 80.0,
                         width: 80.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('lib/tech_consultation_image.png'),
                             fit: BoxFit.cover,
@@ -168,27 +180,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildServiceCard(label: 'Cyber Security'),
-                  SizedBox(width: 13.0),
+                  const SizedBox(width: 13.0),
                   _buildServiceCard(label: 'Graphic Designing'),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   _buildServiceCard(label: 'Brand Strategy'),
                 ],
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'How can we assist you?',
                     style: TextStyle(
                       fontSize: 24.0,
@@ -203,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(builder: (context) => ServicesScreen()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'See All',
                       style: TextStyle(
                         fontSize: 16.0,
@@ -232,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
               'This file is totally free for education purpose, for commercial license please contact us.',
               buttonText: 'Book Appointment',
             ),
-            SizedBox(height: 20.0), // Bottom padding
+            const SizedBox(height: 20.0), // Bottom padding
           ],
         ),
       ),
@@ -260,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF0B8FAC), // New color
+        selectedItemColor: const Color(0xFF0B8FAC), // New color
         unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
@@ -271,16 +283,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildServiceCard({required String label}) {
     return Flexible(
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: Color(0xFF0B8FAC), // New color
+          color: const Color(0xFF0B8FAC), // New color
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
           child: Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16.0, // Set text size here
             ),
@@ -296,9 +308,9 @@ class _HomeScreenState extends State<HomeScreen> {
     required String buttonText,
   }) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(10),
@@ -308,22 +320,22 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Text(
               description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.black54,
               ),
             ),
-            SizedBox(height: 10.0),
-            Container(
+            const SizedBox(height: 10.0),
+            SizedBox(
               width: double.infinity, // Makes the button full width
               child: ElevatedButton(
                 onPressed: () {
@@ -333,12 +345,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF0B8FAC), // New color
-                  padding: EdgeInsets.symmetric(vertical: 14.0), // Increases button height
+                  backgroundColor: const Color(0xFF0B8FAC), // New color
+                  padding: const EdgeInsets.symmetric(vertical: 14.0), // Increases button height
                 ),
                 child: Text(
                   buttonText,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white, // Set text color to white
                     fontSize: 16.0, // Adjusts text size if needed
                   ),

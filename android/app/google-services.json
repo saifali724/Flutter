@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "894516929523",
+    "project_id": "flutterapp-18186",
+    "storage_bucket": "flutterapp-18186.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894516929523:android:6ba43da24b3f5a5f3da886",
+        "android_client_info": {
+          "package_name": "com.techbuddy.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVsTWoQbdYTduB3HDtrXDuuAvR3YftwZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

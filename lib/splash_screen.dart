@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:other/home_screen.dart';
 import 'package:other/sign_in.dart';
 import 'sign_in_screen.dart';
 
@@ -58,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     await Future.delayed(Duration(milliseconds: 500), () {}); // Shortened delay
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => SignInScreen()),
+      MaterialPageRoute(builder: (context) => AuthPage()),
     );
   }
 
@@ -118,6 +120,26 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AuthPage extends StatelessWidget {
+  const AuthPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if(snapshot.hasData) {
+            return HomeScreen();
+          } else{
+            return const SignInScreen();
+          }
+        },
       ),
     );
   }
